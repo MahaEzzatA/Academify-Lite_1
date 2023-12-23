@@ -14,7 +14,7 @@ client = OpenAI(
 app = Flask(__name__)
 
 # OpenAI API Key
-#openai.api_key = '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'
+# openai.api_key = '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'
 
 def get_completion(prompt):
     print(prompt)
