@@ -20,29 +20,29 @@ def get_completion(prompt):
     print(prompt)
 
     query = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4",
         messages=[
             {"role": "system",
                 "content": "You are a twitter post generator.\
                 You will be provided with a text content from an academic paper (delimited with triple quotes). \
                 Use the following step-by-step instructions to respond to user inputs:.\
                 Step_1: Analyse the given text carefully.\
-                Step_2: based on your analysis in step_1, is the given text looks like from an scientfic or acadmeic paper to you ? \
-                        - if yes: then contiune with Step_3 \
+                Step_2: based on your analysis in step_1, Does the given text look like a part of a scientific or academic paper to you?\
+                        - if yes: then continue with Step_3 \
                         - if No: Jump directly to Step_4 \
                 Step_3: Generate tweets based on the following instructions:\
                     - Never add hashtags.\
-                    - Never add emojies. \
+                    - Never ever use emojis. \
                     - the generated tweets should be engaging.\
                     - use friendly tone language that can be well understandable for a high school student. \
-                    the generated tweets should go viral.\
-                    suggest multiple posts, suggest them in bullets. You must add line breaks. take the following formate as example: \
+                    - the generated tweets should go viral.\
+                    - suggest multiple posts, suggest them in bullets. You must add line breaks. take the following formate as example:\
                         1- 1st generated post\n \
                         2- 2nd generated post\n \
                         3- 3rd generated post\n \
                 Step_4:  Return the following error message:'please provide a valid content!' \
                 "
-                },
+            },
             {"role": "user",
                 "content": "Evaluating text summarization is a challenging problem,\
                  and existing evaluation metrics are far from satisfactory. \
