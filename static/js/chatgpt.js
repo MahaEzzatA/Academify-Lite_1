@@ -20,6 +20,7 @@ $(document).ready(function() {
             });
                 // Get the prompt
                 var prompt = $('#prompt').val();
+                var selectedTone = document.getElementById("toneSelect").value;
                 //var dateTime = new Date();
                 //var time = dateTime.toLocaleTimeString();
                 $('#response').text('');
@@ -34,7 +35,7 @@ $(document).ready(function() {
                 $.ajax({
                     url: '/',
                     type: 'POST',
-                    data: {prompt: ' """ '+ prompt + ' """ ' },
+                    data: {prompt: ' """ '+ prompt + ' """ ' , tone: selectedTone},
                     dataType: 'json',
                     success: function(data) {
                         //$('#tweet').append('<p id="GFG2">('+ time + ') <i class="bi bi-robot"></i>: ' + data.response + '</p>');
@@ -60,45 +61,52 @@ $(document).ready(function() {
                 });
             });
         });
-            // Function to share text on Twitter
-            function shareOnTwitter(content) {
-                var tweetUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(content);
-                window.open(tweetUrl, '_blank');
-            }
-            // Function to copy text to clipboard
-            function copyTextToClipboard(content) {
-                navigator.clipboard.writeText(content);
-            }
-            function build_table_row(tbl, copy_icon, twitter_icon, post_content) {
-                const row = tbl.insertRow();
-                const cell1 = row.insertCell(0);
-                const cell2 = row.insertCell(1);
-                const cell3 = row.insertCell(2);
+        // Function to share text on Twitter
+        function shareOnTwitter(content) {
+            var tweetUrl = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(content);
+            window.open(tweetUrl, '_blank');
+        }
+        // Function to copy text to clipboard
+        function copyTextToClipboard(content) {
+            navigator.clipboard.writeText(content);
+        }
+        // Function to toggle the visibility of the dropdown based on the checkbox state
+        function toggleToneDropdown() {
+            var checkbox = document.getElementById("selectToneCheckbox");
+            var dropdownContainer = document.getElementById("toneDropdownContainer");
+            // toggle the visibility of the dropdown
+            dropdownContainer.style.display = checkbox.checked ? "block" : "none";
+        }
+        function build_table_row(tbl, copy_icon, twitter_icon, post_content) {
+            const row = tbl.insertRow();
+            const cell1 = row.insertCell(0);
+            const cell2 = row.insertCell(1);
+            const cell3 = row.insertCell(2);
 
-                cell1.textContent = post_content;
-                create_row_btn(copy_icon, cell2, post_content, "copy");
-                create_row_btn(twitter_icon, cell3, post_content, "share");
+            cell1.textContent = post_content;
+            create_row_btn(copy_icon, cell2, post_content, "copy");
+            create_row_btn(twitter_icon, cell3, post_content, "share");
+        }
+        function create_row_btn(icon_source, cell, post_content, flag) {
+            var btn = document.createElement('span');
+            btn.innerHTML = "<span class='u-border-none u-btn u-button-style u-none u-text-palette-2-base u-btn-2'></span>";
+            btn.style = "cursor:pointer;";
+            icon = create_icon(icon_source);
+            if (flag == "copy") {
+                    btn.title = "Copy";
+                    btn.addEventListener('click', () => {copyTextToClipboard(post_content);});
+            } else {
+                    btn.title = "Share on X";
+                    btn.addEventListener('click', () => {shareOnTwitter(post_content);});
             }
-            function create_row_btn(icon_source, cell, post_content, flag) {
-                var btn = document.createElement('span');
-                btn.innerHTML = "<span class='u-border-none u-btn u-button-style u-none u-text-palette-2-base u-btn-2'></span>";
-                btn.style = "cursor:pointer;";
-                icon = create_icon(icon_source);
-                if (flag == "copy") {
-                        btn.title = "Copy";
-                        btn.addEventListener('click', () => {copyTextToClipboard(post_content);});
-                } else {
-                        btn.title = "Share on X";
-                        btn.addEventListener('click', () => {shareOnTwitter(post_content);});
-                }
-                btn.append(icon);
-                cell.appendChild(btn);
-            }
-            function create_icon(icon_source) {
-                let img = document.createElement('img');
-                img.src = icon_source;
-                img.style.height = '50px';
-                img.style.width = '50px';
-                return img;
-            }
+            btn.append(icon);
+            cell.appendChild(btn);
+        }
+        function create_icon(icon_source) {
+            let img = document.createElement('img');
+            img.src = icon_source;
+            img.style.height = '50px';
+            img.style.width = '50px';
+            return img;
+        }
 

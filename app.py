@@ -16,35 +16,35 @@ app = Flask(__name__)
 # OpenAI API Key
 # openai.api_key = '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'
 
-def get_completion(prompt):
+def get_completion(prompt, tone):
     print(prompt)
 
     query = client.chat.completions.create(
         model="gpt-4",
         messages=[
             {"role": "system",
-                "content": "You are a twitter post generator.\
+                "content": f"You are a twitter post generator.\
                 You will be provided with a text content from an academic paper (delimited with triple quotes). \
                 Use the following step-by-step instructions to respond to user inputs:.\
                 Step_1: Analyse the given text carefully.\
-                Step_2: based on your analysis in step_1, Does the given text look like a part of a scientific or academic paper to you?\
+                Step_2: based on your analysis in step_1, Does the given text look like a part of a scientific or academic paper based on specific criteria to you?\
                         - if yes: then continue with Step_3 \
                         - if No: Jump directly to Step_4 \
                 Step_3: Generate tweets based on the following instructions:\
                     - Never add hashtags.\
                     - Never ever use emojis. \
                     - the generated tweets should be engaging.\
-                    - use friendly tone language that can be well understandable for a high school student. \
+                    - use {tone} tone language that can be well understandable for a high school student. \
                     - the generated tweets should go viral.\
                     - suggest multiple posts, suggest them in bullets. You must add line breaks. take the following formate as example:\
-                        1- 1st generated post\n \
-                        2- 2nd generated post\n \
-                        3- 3rd generated post\n \
-                Step_4:  Return the following error message:'please provide a valid content!' \
+                        1- 1st generated post. \
+                        2- 2nd generated post. \
+                        3- 3rd generated post. \
+                Step_4:  Return the following error message:'Please provide a valid text from your scientific paper so I can generate engaging posts for you!'\
                 "
             },
             {"role": "user",
-                "content": "Evaluating text summarization is a challenging problem,\
+                "content": """Evaluating text summarization is a challenging problem,\
                  and existing evaluation metrics are far from satisfactory. \
                  In this study, we explored ChatGPT's ability to perform human-like summarization evaluation \
                 using four human evaluation methods on five datasets. We found that ChatGPT was able to complete\
@@ -53,7 +53,7 @@ def get_completion(prompt):
                 evaluation metrics on some datasets. \
                 Furthermore, we discussed the impact of different prompts,\
                 compared its performance with that of human evaluation, \
-                and analyzed the generated explanations and invalid responses. "
+                and analyzed the generated explanations and invalid responses. """
             },
             {"role": "assistant", "content": "\
                     1- Can AI models like ChatGPT accurately evaluate text summarization? This study explores their performance using human-like evaluation methods. Exciting findings ahead! \
@@ -61,7 +61,7 @@ def get_completion(prompt):
                     3- Are existing evaluation metrics for text summarization outdated? This study introduces ChatGPT's impressive evaluation capabilities. Join the discussion! \
                     4- Breaking down the limitations of current evaluation metrics for text summarization. Discover how ChatGPT revolutionizes the game with human-like evaluation. Stay tuned!\
             "},
-            {"role": "user", "content":prompt}
+            {"role": "user", "content" : prompt}
         ],
         max_tokens=1024,
         n=1,
@@ -78,7 +78,10 @@ def query_view():
     if request.method == 'POST':
         print('step1')
         prompt = request.form['prompt']
-        response = get_completion(prompt)
+        tone = request.form['tone']
+        print(tone)
+
+        response = get_completion(prompt, tone)
         print(response)
 
         return jsonify({'response': response})
