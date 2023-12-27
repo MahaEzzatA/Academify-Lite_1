@@ -44326,6 +44326,7 @@ a.u-link.u-text-hover-grey-90:hover {
     width: auto;
     margin-top: -67px;
     margin-left: 68px;
+
   }
 }
 @media (max-width: 991px) {
@@ -44340,13 +44341,13 @@ a.u-link.u-text-hover-grey-90:hover {
     font-size: 1.25rem;
     margin-top: -64px;
     margin-bottom: 33px;
-    margin-left: 52px;
+    margin-left: 90px;
   }
 }
 @media (max-width: 575px) {
   .u-header .u-text-1 {
     margin-top: -64px;
-    margin-left: 52px;
+    margin-left: 90px;
   }
 }
  .u-footer {
