@@ -20,9 +20,15 @@ $(document).ready(function() {
             });
                 // Get the prompt
                 var prompt = $('#prompt').val();
-                var selectedTone = document.getElementById("toneSelect").value;
-                //var dateTime = new Date();
-                //var time = dateTime.toLocaleTimeString();
+                var checkbox = document.getElementById("selectToneCheckbox");
+                var loading_div =  document.getElementById("loading");
+
+                var selectedTone = "Friendly";
+                if (checkbox.checked) {
+                    selectedTone = document.getElementById("toneSelect").value;
+                }
+                var dateTime = new Date();
+                var time = dateTime.toLocaleTimeString();
                 $('#response').text('');
                 while (tbl.hasChildNodes()) {
                     tbl.removeChild(tbl.lastChild);
@@ -32,6 +38,20 @@ $(document).ready(function() {
                 //$('#response #GFG1').css({"color": "green", "width": "90%", "float": "left"});
                 // Clear the prompt
                 $('#prompt').val('');
+                // Show the loading icon
+                let loadingIcon = document.createElement('img');
+                loadingIcon.src = "static/img/loading-slow-net.gif";
+
+                loadingIcon.style.display = "block";
+                //loadingIcon.style.width = "100px";  // Set  width
+                //loadingIcon.style.height = "100px"; // Set height
+
+                loadingIcon.style.display = "block";
+                //loadingIcon.style.position = "absolute";
+                loadingIcon.style.left = "35%";
+                loadingIcon.style.top = "35%";
+                $('#loading').append(loadingIcon);
+
                 $.ajax({
                     url: '/',
                     type: 'POST',
@@ -39,7 +59,7 @@ $(document).ready(function() {
                     dataType: 'json',
                     success: function(data) {
                         //$('#tweet').append('<p id="GFG2">('+ time + ') <i class="bi bi-robot"></i>: ' + data.response + '</p>');
-                        array = data.response.split(/\r?\n|\r|\n/g);
+                        array = data.response.split(/\r?\n|\r|\n\d+\-/g);
                         if (array.length > 1){
                             for(i in array){
                                 array[i] = array[i].replace(/\d+\-/g, '');
@@ -55,9 +75,22 @@ $(document).ready(function() {
                             cell1.textContent = array[0];
                         }
                         //$('#response #GFG2').css({"color": "red", "width": "90%", "float": "right"});
+                        //$('#tweet').removeChild(loadingIcon);
+                        loading_div.removeChild(loadingIcon);
+                        $('#tweet').append(tbl)
+                    },
+                    error: function( ) {
+                        const row = tbl.insertRow();
+                        const cell1 = row.insertCell(0);
+                        cell1.style.width = '100%';
+                        cell1.textContent = "Oops! Something went wrong.\nWe're sorry. Our team has been notified, and we're working to fix the issue. Please try again later.!";
+                        loading_div.removeChild(loadingIcon);
 
                         $('#tweet').append(tbl)
+
+
                     }
+
                 });
             });
         });
@@ -74,8 +107,12 @@ $(document).ready(function() {
         function toggleToneDropdown() {
             var checkbox = document.getElementById("selectToneCheckbox");
             var dropdownContainer = document.getElementById("toneDropdownContainer");
+            var toneSelect = document.getElementById("toneSelect");
             // toggle the visibility of the dropdown
             dropdownContainer.style.display = checkbox.checked ? "block" : "none";
+            if (!checkbox.checked) {
+                toneSelect.selectedIndex = 0;
+            }
         }
         function build_table_row(tbl, copy_icon, twitter_icon, post_content) {
             const row = tbl.insertRow();

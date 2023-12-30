@@ -61,7 +61,7 @@ def get_completion(prompt, tone):
                     3- Are existing evaluation metrics for text summarization outdated? This study introduces ChatGPT's impressive evaluation capabilities. Join the discussion! \
                     4- Breaking down the limitations of current evaluation metrics for text summarization. Discover how ChatGPT revolutionizes the game with human-like evaluation. Stay tuned!\
             "},
-            {"role": "user", "content" : prompt}
+            {"role": "user", "content": prompt}
         ],
         max_tokens=1024,
         n=1,
