@@ -8,6 +8,7 @@ $(document).ready(function() {
             });
             var copy_icon_source =   "static/img/1827973.png";
             var twitter_icon_source = "static/img/5969020.png";
+            var loading_gif_source = "static/img/loading-slow-net.gif";
             tbl =  document.getElementById("tbl");
             $('form').on('submit', function(event) {
                 event.preventDefault();
@@ -38,16 +39,15 @@ $(document).ready(function() {
                 //$('#response #GFG1').css({"color": "green", "width": "90%", "float": "left"});
                 // Clear the prompt
                 $('#prompt').val('');
-                // Show the loading icon
+                // Show the loading gif
                 let loadingIcon = document.createElement('img');
-                loadingIcon.src = "static/img/loading-slow-net.gif";
-
+                loadingIcon.src = loading_gif_source ;
+                //class="u-align-center u-image u-image-contain u-image-default u-preserve-proportions u-image-1"
                 loadingIcon.style.display = "block";
                 //loadingIcon.style.width = "100px";  // Set  width
                 //loadingIcon.style.height = "100px"; // Set height
+                loadingIcon.className="u-align-center u-image u-image-contain u-image-default u-preserve-proportions u-image-1";
 
-                loadingIcon.style.display = "block";
-                //loadingIcon.style.position = "absolute";
                 loadingIcon.style.left = "35%";
                 loadingIcon.style.top = "35%";
                 $('#loading').append(loadingIcon);
@@ -75,7 +75,6 @@ $(document).ready(function() {
                             cell1.textContent = array[0];
                         }
                         //$('#response #GFG2').css({"color": "red", "width": "90%", "float": "right"});
-                        //$('#tweet').removeChild(loadingIcon);
                         loading_div.removeChild(loadingIcon);
                         $('#tweet').append(tbl)
                     },
@@ -83,12 +82,9 @@ $(document).ready(function() {
                         const row = tbl.insertRow();
                         const cell1 = row.insertCell(0);
                         cell1.style.width = '100%';
-                        cell1.textContent = "Oops! Something went wrong.\nWe're sorry. Our team has been notified, and we're working to fix the issue. Please try again later.!";
+                        cell1.textContent = "Oops! Something went wrong.\nWe're sorry. Our team has been notified, and we're working to fix the issue. Please try again later!";
                         loading_div.removeChild(loadingIcon);
-
                         $('#tweet').append(tbl)
-
-
                     }
 
                 });
@@ -114,6 +110,7 @@ $(document).ready(function() {
                 toneSelect.selectedIndex = 0;
             }
         }
+        // Function to create table's row:
         function build_table_row(tbl, copy_icon, twitter_icon, post_content) {
             const row = tbl.insertRow();
             const cell1 = row.insertCell(0);
@@ -124,6 +121,7 @@ $(document).ready(function() {
             create_row_btn(copy_icon, cell2, post_content, "copy");
             create_row_btn(twitter_icon, cell3, post_content, "share");
         }
+        // Function to create row's buttons:
         function create_row_btn(icon_source, cell, post_content, flag) {
             var btn = document.createElement('span');
             btn.innerHTML = "<span class='u-border-none u-btn u-button-style u-none u-text-palette-2-base u-btn-2'></span>";
@@ -139,6 +137,7 @@ $(document).ready(function() {
             btn.append(icon);
             cell.appendChild(btn);
         }
+        // Function to create buttons' icons:
         function create_icon(icon_source) {
             let img = document.createElement('img');
             img.src = icon_source;
