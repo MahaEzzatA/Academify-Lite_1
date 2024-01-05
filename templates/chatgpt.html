@@ -38,47 +38,29 @@
           <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-2">
             <div class="u-container-layout u-container-layout-2">
               <div class="u-form u-form-1">
-                <form class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" method="POST" action="" style="padding: 10px;">
+                <form class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" method="POST" action="" id = "form_1" style="padding: 10px;">
                   <div class="u-form-group u-form-message">
                     <label for="prompt" class="u-custom-font u-font-oswald u-label u-text-palette-1-dark-1 u-label-1">Copy the text from your academic paper (eg:abstract section), and let the application generate posts for you:</label>
                     <br>
                     <br>
                     <textarea placeholder="Enter your academic content here" rows="4" cols="50" name="message" class="u-input u-input-rectangle u-input-1" id="prompt" required=""></textarea>
                     <input class="u-form-control-hidden">
-                    <div class="u-form-checkbox u-form-group u-form-group-2">
-                        <input type="checkbox"  id="selectToneCheckbox" onchange="toggleToneDropdown()" name="checkbox" value="On" class="u-active-palette-1-base u-border-2 u-border-grey-75 u-field-input u-radius" style="--radius:5px;">
-                        <label for="selectToneCheckbox" class="u-field-label u-text-custom-color-9" style="font-weight: 700;">I want to pick my posts tone</label>
-                    </div>
-
-                    <div id="toneDropdownContainer" style="display: none;" class="u-form-group u-form-select u-form-group-3">
-                        <label for="toneDropdownContainer" class="u-custom-font u-font-oswald u-form-control-hidden u-label u-text-palette-1-dark-1 u-label-2"></label>
-                        <div class="u-form-select-wrapper">
-                          <select id="toneSelect" name="select" class="u-input u-input-rectangle u-input-2">
-                            <option value="Friendly">Friendly</option>
-                            <option value="Formal">Formal</option>
-                            <option value="Curious/Questioning">Curious/Questioning</option>
-                            <option value="Humorous">Humorous</option>
-                            <option value="Narrative/Storytelling">Narrative/Storytelling</option>
-                          </select>
-                          <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="fill:currentColor;" xml:space="preserve"><polygon class="st0" points="8,12 2,4 14,4 "></polygon></svg>
-                        </div>
-                    </div>
                     <div class="u-align-left u-form-group u-form-submit">
-                      <button class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-color-6 u-hover-palette-2-light-1 u-radius u-btn-1" style="margin-top: 10px;" type="submit">Generate</button>
+                      <button class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-color-6 u-hover-palette-2-light-1 u-radius u-btn-1" style="margin-top: 15px;" type="submit">Generate</button>
                     </div>
                   </div>
                 </form>
               </div>
             </div>
           </div>
-          <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-3">
-            <div class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-sm u-valign-bottom-xs u-container-layout-3">
+          <div class="u-container-align-center-xs u-container-style u-expanded-width u-group u-shape-rectangle u-group-3">
+            <div class="u-container-layout u-container-layout-3">
               <div class="custom-expanded data-layout-selected u-clearfix u-gutter-14 u-hover-feature u-layout-wrap u-layout-wrap-1">
                 <div class="u-gutter-0 u-layout">
                   <div class="u-layout-row">
-                    <div class="u-align-left u-container-style u-layout-cell u-radius-20  u-size-24 u-white u-layout-cell-1"  data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
-                      <div class="u-container-layout u-container-layout-4" style="overflow: auto;" >
-                        <h6 class="u-custom-font u-font-oswald u-text u-text-default u-text-palette-1-dark-1 u-text-1">Your text:</h6>
+                    <div class="u-align-left u-container-align-center-xs u-container-style u-layout-cell u-radius-20 u-shape-round u-size-24 u-white u-layout-cell-1" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
+                      <div class="u-container-layout u-container-layout u-valign-middle-xs u-container-layout-4" style="overflow: auto;" >
+                        <h6 class="u-align-center-xs u-custom-font u-font-oswald u-text u-text-default u-text-palette-1-dark-1 u-text-1" >Your text:</h6>
                         <div class="u-container-style u-expanded-width  u-group u-shape-rectangle u-group-4" style="overflow: auto;">
                           <div class="u-container-layout u-container-layout-5 u-text u-text-palette-1-base u-text-2" style="overflow: auto;" id="response">
                             <p class="u-text u-text-palette-1-base u-text-2"  text-align= "justify" text-justify="inter-word">  </p>
@@ -88,6 +70,28 @@
                     </div>
                     <div class="u-align-left u-container-style u-layout-cell u-radius-20 u-shape-round u-size-36 u-white u-layout-cell-2" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
                       <div class="u-container-layout u-container-layout-6" style="overflow: auto;" >
+                        <div class="u-expanded-width u-form u-form-2">
+                          <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-horizontal u-form-spacing-10 u-inner-form" method="POST"  name="form" style="padding: 10px;" id = "form_2">
+                            <div class="u-form-group u-form-select u-form-group-5" >
+                              <label for="toneSelect" class="u-label-2">Posts Tone</label>
+                              <div class="u-form-select-wrapper">
+                                <select id="toneSelect" name="select" class="u-input u-input-rectangle u-input-2">
+                                  <option value="Friendly">Friendly</option>
+                                  <option value="Formal">Formal</option>
+                                  <option value="Curious/Questioning">Curious/Questioning</option>
+                                  <option value="Humorous">Humorous</option>
+                                  <option value="Narrative/Storytelling">Narrative/Storytelling</option>
+                                </select>
+                                <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="fill:currentColor;" xml:space="preserve"><polygon class="st0" points="8,12 2,4 14,4 "></polygon></svg>
+                              </div>
+                            </div>
+                            <div class="u-form-group u-form-submit u-label-left">
+                              <button href="#" class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-color-6 u-hover-palette-2-light-1 u-radius-10 u-btn-2" >Regenerate</button>
+                              <input type="submit" value="submit" class="u-form-control-hidden">
+                            </div>
+
+                          </form>
+                        </div>
                         <h6 class="u-custom-font u-font-oswald u-text u-text-default u-text-palette-1-dark-1 u-text-1"></h6>
                         <div class="u-container-style u-expanded-width u-group u-shape-rectangle u-group-5"  >
                           <div class="u-container-layout u-container-layout-7" id="loading">

@@ -15,10 +15,46 @@ app = Flask(__name__)
 
 # OpenAI API Key
 # openai.api_key = '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'
+def get_tweets_based_on_tone(tone):
+    match tone:
+        case ("Friendly"):
+            return " 1- Can AI models like ChatGPT accurately evaluate text summarization? This study explores their performance using human-like evaluation methods. Exciting findings ahead! \
+                    2- Evaluating text summarization just got more interesting! ChatGPT shows promise in assessing summaries. Let's dive into the details... \
+                    3- Are existing evaluation metrics for text summarization outdated? This study introduces ChatGPT's impressive evaluation capabilities. Join the discussion! \
+                    4- Breaking down the limitations of current evaluation metrics for text summarization. Discover how ChatGPT revolutionizes the game with human-like evaluation. Stay tuned!\""
 
-def get_completion(prompt, tone):
+        case("Formal"):
+            return "1- The examination of text summarization has been diligently undertaken, employing a comprehensive array of evaluation methods. ChatGPT, our subject of scrutiny, demonstrated an exceptional proficiency in navigating the Likert scale, pairwise comparison, Pyramid, and binary factuality with remarkable finesse. The implications are profound, indicating a heightened efficacy in the realm of text summarization evaluation.\
+                    2- In the meticulous exploration of text summarization, the prowess of ChatGPT has been discerned through the prism of evaluative methodologies. The Likert scale, pairwise comparison, Pyramid, and binary factuality have been deftly utilized to assess the nuanced capabilities of ChatGPT, thereby revealing its superiority over conventional automatic metrics.\
+                    3- The intricate landscape of text summarization evaluation has been traversed with precision, employing a rigorous examination protocol. The judicious application of Likert scale, pairwise comparison, Pyramid, and binary factuality has shed light on ChatGPT's ability to outperform prevailing automatic evaluation metrics, thereby establishing a paradigm shift in the evaluation paradigm.\
+                    4- The study of text summarization has undergone meticulous scrutiny, with ChatGPT emerging as a formidable candidate in the assessment arena. Through the systematic application of Likert scale, pairwise comparison, Pyramid, and binary factuality, ChatGPT's capacity to surpass conventional metrics has been substantiated, thereby redefining the contours of text summarization evaluation.\
+                    5- In the scholarly pursuit of text summarization evaluation, the comprehensive utilization of evaluative methodologies has brought to fore ChatGPT's exemplary performance. The Likert scale, pairwise comparison, Pyramid, and binary factuality, when applied with precision, underscore ChatGPT's prowess in surpassing conventional benchmarks, thus heralding a new era in text summarization assessment.\
+                    "
+        case("Humorous"):
+            return "1- ChatGPT just aced text summarization evaluation, making us question our own life choices. Likert scale, pairwise comparison, Pyramid, and binary factuality - turns out ChatGPT is the evaluation guru we never knew we needed. Who needs therapists when you've got ChatGPT? \
+                    2- We put ChatGPT through the ringer of text summarization evaluation methods. Likert scale, pairwise comparison, Pyramid, binary factuality – it faced them like a pro. It's not just AI; it's a summarization ninja. Someone get it a cape!\
+                    3- If text summarization were a game show, ChatGPT would be the undefeated champion. Likert scale, pairwise comparison, Pyramid, binary factuality - it faced them all with the swagger of a game show host. Move over, Alex Trebek, ChatGPT's taking over!\
+                    4- Text summarization evaluation just got a dose of ChatGPT's humor. Likert scale, pairwise comparison, Pyramid, binary factuality - it played them like a stand-up routine. Forget the punchlines; ChatGPT's got the perfect summary for every joke.\
+                    5- We asked ChatGPT to evaluate text summarization using Likert scale, pairwise comparison, Pyramid, and binary factuality. Turns out, it not only knows how to summarize but also how to drop a punchline. Text summarization has never been this entertaining! \
+                    "
+        case("Curious/Questioning"):
+            return "1- Have you ever wondered about the intricacies of text summarization evaluation? Enter ChatGPT, the subject of our exploration. How does it fare with the Likert scale, pairwise comparison, Pyramid, and binary factuality? The results might just pique your curiosity and reshape your understanding.\
+                    2- Text summarization evaluation: a complex puzzle waiting to be unraveled. Join us in delving into the enigma with ChatGPT. How does it navigate the labyrinth of Likert scale, pairwise comparison, Pyramid, and binary factuality? Prepare for revelations that might leave you questioning the status quo.\
+                    3- The landscape of text summarization evaluation beckons us to question the traditional metrics. In this quest, ChatGPT takes center stage, facing the Likert scale, pairwise comparison, Pyramid, and binary factuality. What unfolds in this journey of inquiry might just challenge preconceived notions.\
+                    4- Ever pondered the nuances of text summarization evaluation methodologies? Step into the realm of inquiry with ChatGPT as the protagonist. How does it engage with the Likert scale, pairwise comparison, Pyramid, and binary factuality? The unfolding narrative might just leave you with more questions than answers. \
+                    "
+        case("Narrative/Storytelling"):
+            return "1- In the realm of text summarization evaluation, a captivating narrative unfolds. Picture this: ChatGPT, a protagonist with unparalleled abilities, takes center stage. The Likert scale, pairwise comparison, Pyramid, and binary factuality become the chapters, revealing a story of triumph over conventional metrics, rewriting the script of assessment.\
+                    2- Let me weave a tale for you, a tale of text summarization evaluation. Enter ChatGPT, the hero of our narrative. As we delve into the story, the Likert scale, pairwise comparison, Pyramid, and binary factuality emerge as plot twists, each contributing to an epic saga of innovation and outperformance.\
+                    3- Embark on a journey through the narrative of text summarization evaluation, where ChatGPT emerges as the protagonist. The Likert scale, pairwise comparison, Pyramid, and binary factuality form the chapters of this compelling story. Within these pages, a tale of prowess and transformation unfolds.\
+                    4- Join me as we unravel the narrative of text summarization evaluation. At the heart of this story is ChatGPT, navigating the Likert scale, pairwise comparison, Pyramid, and binary factuality. The plot thickens, revealing a narrative of excellence and a paradigm shift in assessment.\
+                    5- Allow me to transport you into the narrative of text summarization evaluation, where ChatGPT takes on the role of the protagonist. The Likert scale, pairwise comparison, Pyramid, and binary factuality become the elements of a gripping storyline, showcasing the evolution and superiority of ChatGPT in the evaluation saga.\
+                    "
+
+
+def get_completion(prompt,tone):
     print(prompt)
-
+    print(tone)
     query = client.chat.completions.create(
         model="gpt-4",
         messages=[
@@ -33,8 +69,9 @@ def get_completion(prompt, tone):
                 Step_3: Generate tweets based on the following instructions:\
                     - Never add hashtags.\
                     - Never ever use emojis. \
+                    - Must use the provided tone {tone}. \
                     - the generated tweets should be engaging.\
-                    - use {tone} tone language that can be well understandable for a high school student. \
+                    - use language that can be well understandable for a high school student. \
                     - the generated tweets should go viral.\
                     - suggest multiple posts, suggest them in bullets. You must add line breaks. take the following formate as example:\
                         1- 1st generated post. \
@@ -55,12 +92,7 @@ def get_completion(prompt, tone):
                 compared its performance with that of human evaluation, \
                 and analyzed the generated explanations and invalid responses. """
             },
-            {"role": "assistant", "content": "\
-                    1- Can AI models like ChatGPT accurately evaluate text summarization? This study explores their performance using human-like evaluation methods. Exciting findings ahead! \
-                    2- Evaluating text summarization just got more interesting! ChatGPT shows promise in assessing summaries. Let's dive into the details... \
-                    3- Are existing evaluation metrics for text summarization outdated? This study introduces ChatGPT's impressive evaluation capabilities. Join the discussion! \
-                    4- Breaking down the limitations of current evaluation metrics for text summarization. Discover how ChatGPT revolutionizes the game with human-like evaluation. Stay tuned!\
-            "},
+            {"role": "assistant", "content": get_tweets_based_on_tone(tone)},
             {"role": "user", "content": prompt}
         ],
         max_tokens=1024,
