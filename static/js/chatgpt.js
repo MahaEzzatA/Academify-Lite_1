@@ -91,8 +91,8 @@ $(document).ready(function() {
                 dataType: 'json',
                 success: function(data) {
                     //$('#tweet').append('<p id="GFG2">('+ time + ') <i class="bi bi-robot"></i>: ' + data.response + '</p>');
-                    array = data.response.split(/\r?\n|\r|\n\d+- /g);
-                    //array = data.response.split(/\d+\-\s+/g);
+                    array = data.response.split(/\r?\n|\r|\n/g);
+                    array = data.response.split(/\d+\-\s+/g);
                     if (array.length > 1){
                         for(i in array){
                             array[i] = array[i].replace(/\d+\-/g, '');
