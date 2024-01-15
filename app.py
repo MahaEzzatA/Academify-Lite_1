@@ -77,7 +77,7 @@ def get_completion(prompt,tone):
                         1- 1st generated post. \
                         2- 2nd generated post. \
                         3- 3rd generated post. \
-                Step_4:  Return the following error message:'Please provide a valid text from your scientific paper so I can generate engaging posts for you!'\
+                Step_4:  Return the following error message:' Please provide a valid text from your scientific paper so I can generate engaging posts for you! '\
                 "
             },
             {"role": "user",
