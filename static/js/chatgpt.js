@@ -64,11 +64,17 @@ $(document).ready(function() {
                     dataType: 'json',
                     success: function(data) {
                         //$('#tweet').append('<p id="GFG2">('+ time + ') <i class="bi bi-robot"></i>: ' + data.response + '</p>');
-                        array = data.response.split(/\r?\n|\r|\n/g);
-                        array = data.response.split(/\d+\-\s+/g);
+                        // Split the returned response to the array
+                        array = data.response.split(/\r?\n|\r|\n\d+\-\s+\-\s+/g);
+                        //array = data.response.split(/\d+\-\s+/g);
+                        //array = data.response.split(/\-\s+/g);
                         if (array.length > 1){
                             for(i in array){
                                 array[i] = array[i].replace(/\d+\-/g, '');
+                                //Removing emojis if exist
+                                array[i] = array[i].replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,'')
+                                //Removing hashtags if exist
+                                array[i] = array[i].replace(/\#\w\w+\s?/g, '');
                                 if((array[i].length > 0 )&&(array[i].trim().length !== 0)){
                                     build_table_row(tbl,copy_icon_source,twitter_icon_source, edit_icon_source,array[i]);
                                 }
@@ -85,7 +91,6 @@ $(document).ready(function() {
                         //$('#response #GFG2').css({"color": "red", "width": "90%", "float": "right"});
                         loading_div.removeChild(loadingIcon);
                         form_activation(true, form);
-
                         $('#tweet').append(tbl);
                     },
                     error: function( ) {
@@ -94,6 +99,8 @@ $(document).ready(function() {
                         cell1.style.width = '100%';
                         cell1.textContent = "Oops! Something went wrong.\nWe're sorry. Our team has been notified, and we're working to fix the issue. Please try again later!";
                         loading_div.removeChild(loadingIcon);
+                        form_activation(true, form);
+
                         $('#tweet').append(tbl)
                     }
                 });

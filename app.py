@@ -56,44 +56,49 @@ def get_completion(prompt,tone):
     print(prompt)
     print(tone)
     query = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-3.5-turbo",
+        #model="gpt-4",
         messages=[
             {"role": "system",
                 "content": f"You are a twitter post generator.\
                 You will be provided with a text content from an academic paper (delimited with triple quotes). \
-                Use the following step-by-step instructions to respond to user inputs:.\
-                Step_1: Analyse the given text carefully.\
-                Step_2: based on your analysis in step_1, Does the given text look like a part of a scientific or academic paper based on specific criteria to you?\
-                        - if yes: then continue with Step_3 \
-                        - if No: Jump directly to Step_4 \
-                Step_3: Generate tweets based on the following instructions:\
-                    - Never add hashtags.\
-                    - Never ever use emojis. \
-                    - Must use the provided tone {tone}. \
-                    - the generated tweets should be engaging.\
-                    - use language that can be well understandable for a high school student. \
-                    - the generated tweets should go viral.\
-                    - suggest multiple posts, suggest them in bullets. You must add line breaks. take the following formate as example:\
-                        1- 1st generated post. \
-                        2- 2nd generated post. \
-                        3- 3rd generated post. \
-                Step_4:  Return the following error message:' Please provide a valid text from your scientific paper so I can generate engaging posts for you! '\
+                Use the following step-by-step instructions to respond to user inputs:\
+                Step_1:  Analyse the given text carefully.\
+                Step_2:  based on your analysis in step_1, Does the given text look like a part of a scientific or academic paper based on specific criteria to you?\
+                     - if yes: \
+                        -- Return Only generated tweets based on the following instructions:\
+                        -- remove hashtags from generated posts.\
+                        -- remove emojis from generated posts. \
+                        -- Must use the provided tone {tone}. \
+                        -- Use 70 words at most.\
+                        -- the generated tweets should be engaging.\
+                        -- use language that can be well understandable for a high school student. \
+                        -- the generated tweets should go viral.\
+                        -- suggest only 5 posts, suggest them in bullets. You must add line breaks. the output must look like the fllowing examples:\
+                            1- 1st generated post. \
+                            2- 2nd generated post. \
+                            3- 3rd generated post. \
+                        --  here is an example you can imitate:\
+                           * Input: ''' Evaluating text summarization is a challenging problem,\
+                                         and existing evaluation metrics are far from satisfactory. \
+                                         In this study, we explored ChatGPT's ability to perform human-like summarization evaluation \
+                                        using four human evaluation methods on five datasets. We found that ChatGPT was able to complete\
+                                        annotations relatively smoothly using Likert scale scoring, pairwise comparison,\
+                                        Pyramid, and binary factuality evaluation. Additionally, it outperformed commonly used automatic \
+                                        evaluation metrics on some datasets. \
+                                        Furthermore, we discussed the impact of different prompts,\
+                                        compared its performance with that of human evaluation, \
+                                        and analyzed the generated explanations and invalid responses. ''' \
+                           * Output: {get_tweets_based_on_tone(tone)} \
+                    - if No: Only Return the following error message:"
+                           f"' Please provide a valid text from your scientific paper so I can generate engaging posts for you! '\
                 "
+
             },
             {"role": "user",
-                "content": """Evaluating text summarization is a challenging problem,\
-                 and existing evaluation metrics are far from satisfactory. \
-                 In this study, we explored ChatGPT's ability to perform human-like summarization evaluation \
-                using four human evaluation methods on five datasets. We found that ChatGPT was able to complete\
-                annotations relatively smoothly using Likert scale scoring, pairwise comparison, \
-                Pyramid, and binary factuality evaluation. Additionally, it outperformed commonly used automatic \
-                evaluation metrics on some datasets. \
-                Furthermore, we discussed the impact of different prompts,\
-                compared its performance with that of human evaluation, \
-                and analyzed the generated explanations and invalid responses. """
+                "content": f" here is my text {prompt}"
             },
-            {"role": "assistant", "content": get_tweets_based_on_tone(tone)},
-            {"role": "user", "content": prompt}
+
         ],
         max_tokens=1024,
         n=1,
