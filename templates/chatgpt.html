@@ -56,10 +56,10 @@
                               </label>
                               <br>
                               <br>
-                              <textarea placeholder="Enter your academic content" rows="11" cols="50" id="prompt" name="message" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-palette-3-base u-input u-input-rectangle u-input-1" required=""></textarea>
+                              <textarea placeholder="Enter your academic content" rows="11" cols="50" id="prompt" name="message" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-palette-3-base u-input u-input-rectangle u-input-1" required="" oninput="form_valid()"></textarea>
+                              <p id="wordCountMessage"></p>
                             </div>
                             <div class="u-form-group u-form-select u-label-top u-form-group-2">
-                              <label for="toneSelect" class="u-custom-font u-font-oswald u-label u-text-palette-3-dark-3 u-label-2"></label>
                               <div class="u-form-select-wrapper">
                                 <select id="toneSelect" name="select" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-palette-3-base u-input u-input-rectangle u-input-2">
                                   <option value="Friendly">Friendly tone</option>
@@ -73,7 +73,7 @@
                             </div>
                             <div class="u-align-center u-form-group u-form-submit u-label-top u-form-group-3">
                               <input type="submit" value="submit" class="u-form-control-hidden">
-                              <button  class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-2-light-2 u-palette-3-base u-radius u-btn-1">Generate</button>
+                              <button  class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-2-light-2 u-palette-3-base u-radius u-btn-1" id="nnn">Generate</button>
                             </div>
                             <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
                             <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>

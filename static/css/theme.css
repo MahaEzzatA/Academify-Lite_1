@@ -90,7 +90,11 @@
   display: block;
 }
 
-
+#wordCountMessage {
+    color: red;
+    font-size: 0.8em; /* Set the desired font size */
+    font-family: 'Arial', sans-serif;
+}
 
 
  .u-section-1 {
@@ -145,6 +149,7 @@
 
 .u-section-1 .u-input-1 {
   font-weight: 500;
+  resize: none;
 }
 
 .u-section-1 .u-form-group-2 {
@@ -161,7 +166,7 @@
 }
 
 .u-section-1 .u-form-group-3 {
-  margin-top: 20px !important;
+  margin-top: 10px !important;
 }
 
 .u-section-1 .u-btn-1 {

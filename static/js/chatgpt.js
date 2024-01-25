@@ -1,6 +1,6 @@
 $(document).ready(function() {
-
-            // Send the form on enter keypress and avoid if shift is pressed
+            $('#prompt').val('');
+            //Send the form on enter keypress and avoid if shift is pressed
             $('#prompt').keypress(function(event) {
                 if (event.keyCode === 13 && !event.shiftKey) {
                     event.preventDefault();
@@ -10,9 +10,9 @@ $(document).ready(function() {
             $('#copied_div').hide();
 
             $('#form_1').on('submit', function(event) {
+                var form =  document.getElementById("form_1");
                 // Get the prompt
                 var prompt = $('#prompt').val();
-                var form =  document.getElementById("form_1");
                 //$('#response').text('');
                 // Add the prompt to the response div
                 //$('#response').append('<p <i class="bi bi-person"></i>: ' + prompt + '</p>');
@@ -71,6 +71,7 @@ $(document).ready(function() {
                         if (array.length > 1){
                             for(i in array){
                                 array[i] = array[i].replace(/\d+\-/g, '');
+                                array[i] = array[i].replace(/\-\s+/g, '');
                                 //Removing emojis if exist
                                 array[i] = array[i].replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,'')
                                 //Removing hashtags if exist
@@ -103,9 +104,32 @@ $(document).ready(function() {
 
                         $('#tweet').append(tbl)
                     }
-                });
+                });//
             });
+
         });
+        //comment comment
+        function form_valid() {
+            var textareaValue = document.getElementById('prompt').value;
+                        var r_btn = document.getElementById("nnn");
+
+            var wordCount = textareaValue.split(/\s+/).filter(function (word) {
+                return word.length > 0;
+            }).length;
+
+            var wordCountMessage = document.getElementById('wordCountMessage');
+            var maxWords = 1000;
+
+            if (wordCount > maxWords) {
+                wordCountMessage.textContent = 'Word limit exceeded!';
+                r_btn.disabled=true;
+                return false;
+            } else {
+                wordCountMessage.textContent = '';
+                r_btn.disabled=false;
+                return true;
+            }
+        }
         // Function to share text on Twitter
         function shareOnTwitter(content) {
             content = content.trim();
