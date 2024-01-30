@@ -43515,7 +43515,11 @@ a.u-link.u-text-hover-grey-90:hover {
 .u-header .u-text-1 {
   font-size: 1.875rem;
   font-weight: 700;
-  margin: -67px auto 24px 67px;
+  margin: -67px auto 0px 67px;
+}
+.u-header .u-text-2 {
+  font-weight: 400;
+  margin: 0 auto 5px 67px;
 }
 @media (max-width: 1199px) {
   .u-header .u-icon-1 {

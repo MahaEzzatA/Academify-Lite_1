@@ -144,7 +144,7 @@ def get_completion(prompt,tone):
         #model="gpt-4",
         messages=[
             {"role": "system",
-                "content": f"You are a twitter post generator.\
+                "content": f"You are a twitter post generator, who generate posts and never add hashtags or emojis ,this is a must.\
                 You will be provided with a text content from an academic paper (delimited with triple quotes). \
                 Use the following step-by-step instructions to respond to user inputs:\
                 Step_1:  Analyse the given text carefully.\
@@ -160,10 +160,10 @@ def get_completion(prompt,tone):
                                     *Example_2:\
                                             ** Input: '''{get_example('example_2')}'''\
                                             ** Output: {get_tweets_based_on_tone('example_2', tone)} \
-                            -- remove hashtags from generated posts.\
-                            -- remove emojis from generated posts. \
+                            -- Never use hashtags, this is a must.\
+                            -- Never use emojis, this is a must. \
                             -- Must use the provided tone {tone}. \
-                            -- generated post must be between (50 - 70) words\
+                            -- generated post must be between (50 - 60) words\
                             -- the generated tweets should be engaging.\
                             -- use language that can be well understandable for a high school student. \
                             -- the generated tweets should go viral.\
@@ -177,7 +177,9 @@ def get_completion(prompt,tone):
 
             },
             {"role": "user",
-                "content": f" here is my text {prompt}"
+                "content": f" here is my text {prompt}." \
+                #Suggest only 5 posts and Never use hashtags or emojies,\
+                #this is a must. the posts length must be between 50 to 60 words "
             },
 
         ],
