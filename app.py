@@ -69,7 +69,6 @@ def get_tweets_based_on_tone(example,tone):
                              5- Hello, fellow social distancers! Ready for some tech talk? Our study unveils the magic of YOLOv3 and transfer learning, creating a model with a 98% accuracy charm. It's like having a digital distance assistant! Stay safe, keep smiling, and dive into the world of social distancing tech with us!\
                             "
                 case("Formal"):
-                    print("forrrmaaal")
                     return "1- The ongoing global crisis spurred by the COVID-19 pandemic necessitates serious measures. Our study addresses this by proposing a deep learning platform for social distance tracking. Leveraging YOLOv3 and transfer learning, the model achieves a commendable 98% accuracy in detecting and tracking individuals who violate social distancing norms.\
                             2- In response to the pressing challenges posed by the COVID-19 pandemic, our study introduces a robust solution. Employing YOLOv3 and transfer learning, our deep learning platform attains an impressive accuracy rate of 98% in identifying and tracking individuals who breach established social distancing thresholds.\
                             3- Amid the profound impact of the COVID-19 pandemic, our research contributes to mitigating the spread through advanced technology. Utilizing YOLOv3 and transfer learning, our model, boasting a 98% accuracy, effectively identifies and tracks individuals violating social distancing norms.\
@@ -77,7 +76,6 @@ def get_tweets_based_on_tone(example,tone):
                             5- In the face of the ongoing global health crisis, our research endeavors to provide a comprehensive solution. Through the application of YOLOv3 and transfer learning, our model exhibits a commendable 98% accuracy, proficiently identifying and tracking individuals breaching social distancing guidelines.\
                             "
                 case("Humorous"):
-                    print("hahaha")
                     return "1- Our AI takes social distancing seriously, and it's not afraid to make it fun! Using YOLOv3, it's like having a superhero for detecting social distance violations. Who said tech can't be your pandemic buddy?\
                             2- Breaking the social distance record like a pro! Our AI uses YOLOv3 and transfer learning to keep you safe and entertained. With a 98% accuracy rate, it's practically a social distance wizard.\
                             3- When pandemic problems meet AI solutions – cue the laughter track! Our study uses YOLOv3, transfer learning, and a pinch of humor to track social distance. It's not just tech; it's your hilarious health companion.\
@@ -96,7 +94,6 @@ def get_tweets_based_on_tone(example,tone):
                             2- In the vast landscape of pandemic challenges, our study introduces a protagonist – a model crafted with YOLOv3, transfer learning, and a curious spirit. Watch as the story of social distancing unfolds in high accuracy, reaching a climax of 98%. This is more than a study; it's a narrative waiting to be explored.\
                             3- Once upon a time in the realm of social distancing, YOLOv3 and transfer learning joined forces, driven by an insatiable curiosity. The result? A model with 98% accuracy, weaving a compelling tale of technology and human distance. Are you ready to immerse yourself in this narrative of innovation?\
                             4- In the story of combating COVID-19, our study introduces a protagonist – a model shaped by YOLOv3, transfer learning, and a quest for understanding. With 98% accuracy, this narrative unfolds in pixels, capturing the essence of social distancing. Join us as we unveil the chapters of technological storytelling.\
-                            5- Enter the narrative of our study, where technology becomes a protagonist in the fight against the pandemic. YOLOv3, transfer learning, and a curious journey bring forth a model boasting 98% accuracy. Immerse yourself in the pixels that tell the story of social distancing. Ready to explore this technological narrative?\
                              "
         case("example_2"):
             match tone:
@@ -108,7 +105,6 @@ def get_tweets_based_on_tone(example,tone):
                             5- Journey into the realm of VR with our groundbreaking research! Discover how VR sickness influences attention and task performance through EEG insights. Uncover the correlation between P3b amplitude and sickness severity in this fascinating exploration of virtual experiences.\
                             "
                 case ("Formal"):
-                    print("forrrmaaal_2")
                     return "1- Unraveling the intricate relationship between VR sickness and attention modulation through P3b ERP components. Our study employs EEG measurements in a dual-task paradigm, unveiling how symptoms like nausea and eyestrain impact users' capacity to focus in virtual environments. Explore the nuanced dance of attention and VR sickness without the distractions of hashtags or emojis. A scientific journey into the depths of immersive experiences.\
                             2- Embark on a profound exploration of VR sickness's impact on attention, as revealed by P3b ERP components in our latest study. Navigate the complexities of symptoms like fatigue and eyestrain, and their dynamic interplay with users' task performance in virtual environments. Join us for an engaging odyssey, where scientific rigor meets the immersive world of Virtual Reality. No hashtags or emojis, just pure scientific insight.\
                             3- Discover the fascinating dynamics between VR sickness severity and attention levels through the lens of P3b ERP components. Our study, conducted in a dual-task paradigm, showcases the intricate dance of symptoms like nausea and fatigue with users' focus during virtual experiences. Immerse yourself in a world of scientific revelations, where every detail counts. No hashtags or emojis, just a concise journey into the heart of VR research.\
@@ -116,7 +112,6 @@ def get_tweets_based_on_tone(example,tone):
                             5- Join us on a scientific odyssey into the heart of Virtual Reality as we explore the impact of VR sickness on attention. Through P3b ERP components, we decipher the intricate dance of symptoms like nausea and fatigue, providing a deeper understanding of users' focus in virtual environments. No hashtags or emojis, just a concise and informative journey into the world of VR research.\
                             "
                 case ("Humorous"):
-                    print("hahaha_2")
                     return "1- Considering a virtual reality adventure? Hold on tight! Our research reveals VR sickness is like a surprise comedy show for your attention span. Nausea and eyestrain play unexpected comedians in your VR experience. Get the scoop on our study for a laugh-out-loud journey into the world of attention-hijinks in VR.\
                             2- Strap in for the ultimate virtual rollercoaster – and we're not just talking about your stomach! Our latest research dives into the hilarious connection between VR sickness and attention spans. Spoiler alert: Nausea and eyestrain are the uninvited guests stealing the spotlight in your VR comedy club.\
                             3- Ever felt like your VR headset was plotting against you? Our study spills the beans on VR sickness, turning your attention into a stand-up comedy show. Nausea and eyestrain? They're the surprise headliners you never knew you needed for a side-splitting virtual adventure.\
@@ -134,7 +129,6 @@ def get_tweets_based_on_tone(example,tone):
                                2- Step into the world of formal storytelling as our study ventures through the virtual museum, unraveling the complex tale of VR sickness and attention modulation. With P3b ERP components as the storytellers, we paint a vivid picture of how symptoms like nausea and eyestrain influence users' focus. Engage with the narrative, where every detail contributes to a deeper understanding of Virtual Reality research.\
                                3- In the formal narrative of our study, we delve into the virtual museum's immersive story, exploring the profound impact of VR sickness on attention. P3b ERP components narrate the chapters of nausea, eyestrain, and fatigue shaping users' focus. Embark on an informative journey, where every aspect contributes to a nuanced understanding of Virtual Reality. No hashtags or emojis, just a formal narrative in the realm of VR research.\
                                4- Explore the formal narrative of our study, where the virtual museum becomes the stage for unraveling the intricate relationship between VR sickness and attention. P3b ERP components take on the role of formal storytellers, revealing the nuances of symptoms like nausea and eyestrain on users' focus. Join us on an engaging and informative journey into the depths of Virtual Reality research.\
-                               5- Once upon a formal study, we embarked on a storytelling journey through the virtual landscape, decoding the complex interplay of VR sickness and attention. P3b ERP components craft the narrative, shedding light on how symptoms like nausea and eyestrain mold users' focus. Immerse yourself in an informative and engaging story, where each chapter contributes to a deeper understanding of Virtual Reality.\
                             "
 def get_completion(prompt,tone):
     print(prompt)
@@ -144,7 +138,7 @@ def get_completion(prompt,tone):
         #model="gpt-4",
         messages=[
             {"role": "system",
-                "content": f"You are a twitter post generator, who generate posts and never add hashtags or emojis ,this is a must.\
+                "content": f"You are a twitter post generator, who generate posts and never add hashtags or emojis [this is a must].\
                 You will be provided with a text content from an academic paper (delimited with triple quotes). \
                 Use the following step-by-step instructions to respond to user inputs:\
                 Step_1:  Analyse the given text carefully.\
@@ -160,10 +154,11 @@ def get_completion(prompt,tone):
                                     *Example_2:\
                                             ** Input: '''{get_example('example_2')}'''\
                                             ** Output: {get_tweets_based_on_tone('example_2', tone)} \
-                            -- Never use hashtags, this is a must.\
-                            -- Never use emojis, this is a must. \
+                            -- Never use hashtags, [this is a must.]\
+                            -- Never use emojis,[this is a must.] \
                             -- Must use the provided tone {tone}. \
-                            -- generated post must be between (50 - 60) words\
+                            -- the post minimum words' count must be 40 words. \
+                            -- the post maximum words' count must be 60 words. \
                             -- the generated tweets should be engaging.\
                             -- use language that can be well understandable for a high school student. \
                             -- the generated tweets should go viral.\
@@ -177,16 +172,21 @@ def get_completion(prompt,tone):
 
             },
             {"role": "user",
-                "content": f" here is my text {prompt}." \
-                #Suggest only 5 posts and Never use hashtags or emojies,\
-                #this is a must. the posts length must be between 50 to 60 words "
+                "content": f" here is my text {prompt}.\
+                Use the following instructions to generate posts for me:\
+                - Suggest only 5 posts.\
+                - Never use hashtags [this is a must.]\
+                - Never use emojies [this is a must.]\
+                - the post minimum words' count must be 40 words. \
+                - the post maximum words' count must be 60 words. \
+                "
             },
 
         ],
         max_tokens=1024,
         n=1,
         stop=None,
-        temperature=1,
+        temperature=0.7,
     )
 
     response = query.choices[0].message.content.strip()
