@@ -65,13 +65,16 @@ $(document).ready(function() {
                     success: function(data) {
                         //$('#tweet').append('<p id="GFG2">('+ time + ') <i class="bi bi-robot"></i>: ' + data.response + '</p>');
                         // Split the returned response to the array
-                        array = data.response.split(/\r?\n|\r|\n\d+\-\s+\-\s+/g);
+                        const tweetObject = JSON.parse(data.response);
+                        array = Object.values(tweetObject);
+                        //.split(/\r?\n|\r|\n\d+\-\s+\-\s+/g);
                         //array = data.response.split(/\d+\-\s+/g);
                         //array = data.response.split(/\-\s+/g);
                         if (array.length > 1){
                             for(i in array){
                                 array[i] = array[i].replace(/\d+\-/g, '');
                                 array[i] = array[i].replace(/\-\s+/g, '');
+                                array[i] = array[i].replace(/"/g, '');
                                 //Removing emojis if exist
                                 array[i] = array[i].replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,'')
                                 //Removing hashtags if exist
